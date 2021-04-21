@@ -16,3 +16,6 @@ Im Ordner `examples` finden Sie die Dateien. Passen Sie die Regions-ID wie im Ar
 ## Verwenden auf der eigenen Website
 
 Sie brauchen die Datei `src/Incidence.php`, die Sie in Ihrem Dokument per `include()` einbinden. Verwenden Sie zum Beispiel die Datei `examples/snippet.php` als Schnipsel in Ihrer Seite, um eine Ampel darzustellen.
+
+# API Dokumentation
+https://npgeo-corona-npgeo-de.hub.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0
