@@ -1,11 +1,11 @@
 <?php
-include('../src/Incidence.php');
+include('./src/Incidence.php');
 
 # Find your region here and get the OBJECTID: 
 # https://npgeo-corona-npgeo-de.hub.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0
 
 $id = 27; // Hannover
-$cache_file = './data.json';
+$cache_file = './data/data.json';
 $incidence = new Incidence($id, $cache_file);
 
 $today = $incidence->getDaily(0);
