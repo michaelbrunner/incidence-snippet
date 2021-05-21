@@ -3,35 +3,57 @@ include('./src/Incidence.php');
 
 ### Configure here ###
 
-# Find your region here and get the OBJECTID: 
+# Find your region here and get the OBJECTid: 
 # https://npgeo-corona-npgeo-de.hub.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0
-$id = 211; //konstanz
-$cache_file = './data/data.json';
+$idKN = 211; //konstanz
+$idSW = 209; //Schwarzwald Baar
+$cache_file_KN = './data/dataKn.json';
+$cache_file_SW = './data/dataSw.json';
 $threshold = 100;
 
 
 ### End of configs ###
 
 
-$incidence = new Incidence($id, $cache_file);
+$incidenceKN = new Incidence($idKN, $cache_file_KN);
+$incidenceSW = new Incidence($idSW, $cache_file_SW);
 
-$today = $incidence->getDaily(0);
+$todayKN = $incidenceKN->getDaily(0);
+$todaySW = $incidenceSW->getDaily(0);
 
 echo "<div class='widget'>";
 
-echo "<h3>Inzidenz-Ampel für " . $today['GEN'] . "</h3>";
+echo "<h3>Inzidenz-Ampel für " . $todayKN['GEN'] . "</h3>";
 echo "<h6>(Fälle pro 100.000 Einwohner in 7 Tagen)</h6>";
 
-drawStoplight($today, $threshold);
+drawStoplight($todayKN, $threshold);
 
 echo "<table id='tbl_incidence'>";
-echo drawLine($today);
-echo drawLine($incidence->getDaily(1));
-echo drawLine($incidence->getDaily(2));
+echo drawLine($todayKN);
+echo drawLine($incidenceKN->getDaily(1));
+echo drawLine($incidenceKN->getDaily(2));
 echo "</table>";
 echo "<h6>Quelle: <a href='https://www.rki.de/DE/Home/homepage_node.html'>RKI</a></h6>";
 
 echo "<p><a href='/details.php'>Details</a><p>";
+echo "</div>";
+
+
+echo "<div class='widget'>";
+
+echo "<h3>Inzidenz-Ampel für " . $todaySW['GEN'] . "</h3>";
+echo "<h6>(Fälle pro 100.000 Einwohner in 7 Tagen)</h6>";
+
+drawStoplight($todaySW, $threshold);
+
+echo "<table id='tbl_incidence'>";
+echo drawLine($todaySW);
+echo drawLine($incidenceSW->getDaily(1));
+echo drawLine($incidenceSW->getDaily(2));
+echo "</table>";
+echo "<h6>Quelle: <a href='https://www.rki.de/DE/Home/homepage_node.html'>RKI</a></h6>";
+
+echo "<p><a href='/detailsSW.php'>Details</a><p>";
 echo "</div>";
 
 

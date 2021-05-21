@@ -4,8 +4,8 @@ include('./src/Incidence.php');
 # Find your region here and get the OBJECTID: 
 # https://npgeo-corona-npgeo-de.hub.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0
 
-$id = 211; // Konstanz
-$cache_file = './data/dataKn.json';
+$id = 209; // Schwarzwald-Baar
+$cache_file = './data/dataSw.json';
 $incidence = new Incidence($id, $cache_file);
 
 $today = $incidence->getDaily(0);
